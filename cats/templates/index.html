@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}" />
+    <title>Gatos | Lista</title>
+  </head>
+  <body>
+    {% for message in messages %}
+    <p style="color: darkgreen;">{{ message }}</p>
+    {% endfor %}
+
+    <h1>Lista de gatos</h1>
+    <figure>
+      <img src="{% static 'img/cat.jpg' %}" alt="Gato" />
+    </figure>
+    <p>Conectado como: <span class="user">{{ user }}</span></p>
+
+    <form>
+      <label for="breed-id">Filtrar por raza:</label>
+      <input type="text" placeholder="Siamés" name="breed" id="breed-id" />
+      <button type="submit">Enviar</button>
+    </form>
+
+    <ul>
+      {% for cat in cats %}
+      <li>{{ cat.name }} <small>Raza: {{ cat.breed }}</small></li>
+      {% endfor %}
+    </ul>
+
+    <a href="{% url 'create_cat' %}">
+      <button>Registrar nuevo gato</button>
+    </a>
+
+    <script src="{% static 'js/app.js' %}"></script>
+  </body>
+</html>

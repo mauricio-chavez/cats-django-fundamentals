@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}" />
+    <title>Gatos | Crear</title>
+  </head>
+  <body>
+    {% for error in form.name.errors %}
+    <p>
+      <small style="color: red;">{{ error }}</small>
+    </p>
+    {% endfor %}
+
+    <h1>Registra un gato</h1>
+    <figure>
+      <img src="{% static 'img/cat.jpg' %}" alt="Gato" />
+    </figure>
+    <p>Conectado como: <span class="user">{{ user }}</span></p>
+
+    <form method="POST">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <button type="submit">Enviar</button>
+    </form>
+
+    <script src="{% static 'js/app.js' %}"></script>
+  </body>
+</html>
